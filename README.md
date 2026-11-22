@@ -63,7 +63,7 @@ Created a custom Wazuh rule that triggers on a Sysmon process-creation event usi
 6. Test the whole chain
 Ran a test in my own isolated virtual machine and followed the alert through each tool. Result:
 
-![Alt text description](./o.png)
+![Alt text description](./NotifReceived.jpg)
 *Ref 6: Email & Notification recieved*
 And it run as intended. it can be configured futher according to individual needs or to prevent an attack surge across the globe.
 __________________________________________________________________
