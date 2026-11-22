@@ -46,7 +46,7 @@ Installed the Wazuh agent and Sysmon on a Windows 11 virtual machine, opened por
 
 3. Deploy TheHive (Azure VM 2)
 Installed Cassandra, Elasticsearch and TheHive on a second VM. Elasticsearch runs in single-node mode and, like Cassandra, listens on 127.0.0.1 only. Only TheHive's port is reachable, and only from my IP.
-![Alt text description](./The Hive.jpg)
+![Alt text description](./TheHive.jpg)
 *Ref 4: TheHive with analyst users*
 [SCREENSHOT: TheHive login page or case list]
 
