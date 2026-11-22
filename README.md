@@ -67,10 +67,23 @@ Created a custom Wazuh rule that triggers on a Sysmon process-creation event usi
 
 6. Test the whole chain
 
-Ran a test in resulting notification to analyst, and email in finding the targeted log.
+Ran a test in resulting: the Mimikatz test triggered the custom rule, the hash was checked on VirusTotal, TheHive created the alert, and the notification email received.
 ![Alt text description](./NotifReceived.jpg)
 ![Alt text description](./Shuffle_email.jpg)
 *Ref 6: Email & Notification recieved*
-And it run as intended. it can be configured futher according to individual needs or to prevent an attack surge across the globe.
+The workflow ran as intended. It can be extended with more detection rules, more endpoints and response actions to fit different needs.
 __________________________________________________________________
-And lastly, on that note: why I did not include *Suricata* (IDS) in this project: This lab focuses on endpoint detection (Wazuh and Sysmon). Suricata would add network-level detection (IDS/IPS) and give extra visibility, for port scans and known malicious traffic. But in this case Suricata would produces a large number of low-priority alerts, in which it would bury the Mimikatz detection for this project. Because the base point of this project to just see wazuh works and the endpoint is monitored but if the workflow, would flow flawlessly, until it was recieved in email, and analyst hands.
+Problems and How I Solved Them
+
+- Problem: Wazuh agent could not register.
+
+- Solve: In Azure, is not enough to allow the port 1514 & 1515. but action need to be done by adding a Network Security Group rule for those ports, limited to the agent's IP address.
+
+- Problem: Cassandra did not start after the VM restarted
+
+- Solve: All folder that need for Cassandra to work, need to own by Cassandra instead of Root. And now it set up so that all service is running automatically within 30s.
+
+__________________________________________________________________
+And lastly, on that note: why I did not include *Suricata* (IDS) in this project: This lab focuses on endpoint detection (Wazuh and Sysmon). Suricata a network intrusion detection and prevention system (IDS/IPS), would add network-level visibility for port scans and known malicious traffic.
+
+I left it out of this project because an untuned Suricata produces a large number of low-priority alerts, and too many noise which would bury the Mimikatz detection that this project demonstrates. The goal here was to show that the endpoint is monitored and that an alert flows through the whole workflow until it reaches the analyst by email.
