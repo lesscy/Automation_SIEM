@@ -42,19 +42,19 @@ Created an Azure VM, installed Wazuh, and restricted the dashboard and SSH ports
 
 Installed the Wazuh agent and Sysmon on a Windows 11 virtual machine, opened ports 1514 and 1515 for the agent's IP only, and confirmed that the agent showed as Active.
 
-4. Deploy TheHive (Azure VM 2).
+3. Deploy TheHive (Azure VM 2).
 
 Installed Cassandra, Elasticsearch and TheHive on a second VM. Elasticsearch runs in single-node mode and, like Cassandra, listens on 127.0.0.1 only. TheHive's port is reachable only from my IP.
 ![Alt text description](./TheHive.jpg)
 *Ref 3: TheHive with dummy-analyst users*
 
-5. Write the detection rule.
+4. Write the detection rule.
 
 Created a custom Wazuh rule that triggers on a Sysmon process-creation event using the original file name (in this case) is Mimikatz.
 ![Alt text description](./mimikatz_dis.jpg)
 *Ref 4: Mimikatz successfully discovered*
 
-7. Build the Shuffle workflow
+5. Build the Shuffle workflow
 
 - Webhook receives the Wazuh alert
 - The SHA256 value is extracted from the Sysmon hash field
