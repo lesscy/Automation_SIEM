@@ -2,7 +2,7 @@
 
 ## Objective
 
-Build a detection lab on Microsoft Azure that simulates a cyberattack and detects it the way a Security Operations Center (SOC) analyst would see it. Primary focus was to collect endpoint logs, write custom detection rules, and automate the flow so that important, high-priority alerts from the Security Information and Event Management (SIEM) system reach the analyst in a structured form, using Security Orchestration, Automation and Response (SOAR). This hand-on experience was to deepen understanding of SIEM detection rules and SOAR workflows, while keeping the cloud environment secured with restricted network access.
+Build a detection lab on Microsoft Azure that simulates a cyberattack and detects it the way a Security Operations Center (SOC) analyst would see it. Primary focus was to collect endpoint logs, write custom detection rules, and automate the flow so that important, high-priority alerts from the Security Information and Event Management (SIEM) system reach the analyst in a structured form, using Security Orchestration, Automation and Response (SOAR). This hands-on experience was to deepen understanding of SIEM detection rules and SOAR workflows, while keeping the cloud environment secured with restricted network access.
 
 ### Skills Learned
 
