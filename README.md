@@ -34,7 +34,7 @@ Every screenshot should have some text explaining what the screenshot is about.
 
 Example below.
 
-![Alt text description](./1_diagram.png)
+![Alt text description](./flowDiagram.jpg)
 *Ref 1: Network Diagram*
 
 1. Deploy the Wazuh server (Azure VM 1)
