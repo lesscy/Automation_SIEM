@@ -28,12 +28,7 @@ Build a detection lab SOC analyst pipeline on Microsoft Azure, for simulating an
 - Elasticsearch [8.19.25]	TheHive search index
 
 ## Steps
-drag & drop screenshots here or use imgur and reference them using imgsrc
-
-Every screenshot should have some text explaining what the screenshot is about.
-
-Example below.
-
+With these diagram as follow, these are the steps that went down.
 ![Alt text description](./flowDiagram.jpg)
 *Ref 1: Automation Diagram*
 
