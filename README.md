@@ -2,7 +2,7 @@
 
 ## Objective
 
-Build a detection lab SOC analyst pipeline on Microsoft Azure, for simulating and detecting cyber attacks. Primary focus was to ingest, make a system with defined rules, and automate a structured system that flow easly to send alerts of important, high priority, and monitored logs from Security Information and Event Management (SIEM), to each analyst, using Security Orchestration, Automation, and Response (SOAR). This hand-on experience was to deepen understanding of SIEM rules, the flow using Security Orchestration, Automation, and Response (SOAR), while maintaining tight secure environment between the cloud.
+Build a detection lab on Microsoft Azure that simulates a cyberattack and detects it the way a Security Operations Center (SOC). Primary focus was to collect endpoint logs, write custom detection rules, and automate the flow so that important, high-priority alerts from the Security Information and Event Management (SIEM) system reach the analyst in a structured form, using Security Orchestration, Automation and Response (SOAR). This hand-on experience was to deepen understanding of SIEM detection rules and SOAR workflows, while keeping the cloud environment secured with restricted network access.
 
 ### Skills Learned
 
@@ -12,9 +12,9 @@ Build a detection lab SOC analyst pipeline on Microsoft Azure, for simulating an
 - Writing custom Wazuh detection rules (XML and regex) and mapping them according to MITRE ATT&CK.
 - Building SOAR workflows in Shuffle (webhooks, API calls, JSON handling)
 - Setting up TheHive with Cassandra and Elasticsearch, and using service accounts with API keys.
-- Enriching alerts with the VirusTotal.
+- Enriching alerts with the VirusTotal API.
 - Linux administration: systemd services, file permissions and log analysis.
-- Troubleshooting step by step: service, port, network, authentication, data.
+- Step-by-step troubleshooting: service, port, network, authentication and data.
 
 ### Tools Used
 
@@ -41,7 +41,7 @@ Created an Azure VM, installed Wazuh, and restricted the dashboard and SSH ports
 Installed the Wazuh agent and Sysmon on a Windows 11 virtual machine, opened ports 1514 and 1515 for the agent's IP only, and confirmed that the agent showed as Active.
 
 3. Deploy TheHive (Azure VM 2)
-Installed Cassandra, Elasticsearch and TheHive on a second VM. Elasticsearch runs in single-node mode and, like Cassandra, listens on 127.0.0.1 only. Only TheHive's port is reachable, and only from my IP.
+Installed Cassandra, Elasticsearch and TheHive on a second VM. Elasticsearch runs in single-node mode and, like Cassandra, listens on 127.0.0.1 only. TheHive's port is reachable only from my IP.
 ![Alt text description](./TheHive.jpg)
 *Ref 3: TheHive with dummy-analyst users*
 
@@ -61,7 +61,7 @@ Created a custom Wazuh rule that triggers on a Sysmon process-creation event usi
 *Ref 5: Shuffle Workflow*
 
 6. Test the whole chain
-Ran a test in my own isolated virtual machine and followed the alert through each tool. Result:
+Ran a test in resulting notification to analyst, and email in finding the targeted log.
 
 ![Alt text description](./NotifReceived.jpg)
 ![Alt text description](./Shuffle_email.jpg)
