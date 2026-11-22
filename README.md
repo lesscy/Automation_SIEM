@@ -34,9 +34,8 @@ With these diagram as follow, these are the steps that went down.
 
 1. Deploy the Wazuh server (Azure VM 1)
 Created an Azure VM, installed Wazuh, and restricted the dashboard and SSH ports to my own IP in the Network Security Group.
-
-*Ref 2: Network Diagram*
-[SCREENSHOT: Wazuh dashboard, with IPs blurred]
+![Alt text description](./Wazuh.png)
+*Ref 2: Wazuh interface*
 
 2. Connect the Windows 11 endpoint
 Installed the Wazuh agent and Sysmon on a Windows 11 virtual machine, opened ports 1514 and 1515 for the agent's IP only, and confirmed that the agent showed as Active.
@@ -44,12 +43,12 @@ Installed the Wazuh agent and Sysmon on a Windows 11 virtual machine, opened por
 3. Deploy TheHive (Azure VM 2)
 Installed Cassandra, Elasticsearch and TheHive on a second VM. Elasticsearch runs in single-node mode and, like Cassandra, listens on 127.0.0.1 only. Only TheHive's port is reachable, and only from my IP.
 ![Alt text description](./TheHive.jpg)
-*Ref 4: TheHive with analyst users*
+*Ref 3: TheHive with dummy-analyst users*
 
 5. Write the detection rule
 Created a custom Wazuh rule that triggers on a Sysmon process-creation event using the original file name (in this case) is Mimikatz.
 ![Alt text description](./mimikatz_dis.jpg)
-*Ref 5: Mimikatz successfully discovered*
+*Ref 4: Mimikatz successfully discovered*
 
 6. Build the Shuffle workflow
 - Webhook receives the Wazuh alert
@@ -59,13 +58,13 @@ Created a custom Wazuh rule that triggers on a Sysmon process-creation event usi
 - An email notification is sent
 
 ![Alt text description](./SOAR_Shuffle.png)
-*Ref 6: Shuffle Workflow*
+*Ref 5: Shuffle Workflow*
 
 6. Test the whole chain
 Ran a test in my own isolated virtual machine and followed the alert through each tool. Result:
 
 ![Alt text description](./o.png)
-*Ref 7: Email & Notification recieved*
+*Ref 6: Email & Notification recieved*
 And it run as intended. it can be configured futher according to individual needs or to prevent an attack surge across the globe.
 __________________________________________________________________
 And lastly, on that note: why I did not include *Suricata* (IDS) in this project: This lab focuses on endpoint detection (Wazuh and Sysmon). Suricata would add network-level detection (IDS/IPS) and give extra visibility, for port scans and known malicious traffic. But in this case Suricata would produces a large number of low-priority alerts, in which it would bury the Mimikatz detection for this project. Because the base point of this project to just see wazuh works and the endpoint is monitored but if the workflow, would flow flawlessly, until it was recieved in email, and analyst hands.
