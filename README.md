@@ -32,25 +32,30 @@ With these diagram as follow, these are the steps that went down.
 ![Alt text description](./FlowDiagram.jpg)
 *Ref 1: Automation Diagram*
 
-1. Deploy the Wazuh server (Azure VM 1)
+1. Deploy the Wazuh server (Azure VM 1).
+
 Created an Azure VM, installed Wazuh, and restricted the dashboard and SSH ports to my own IP in the Network Security Group.
 ![Alt text description](./Wazuh.png)
 *Ref 2: Wazuh interface*
 
-2. Connect the Windows 11 endpoint
+2. Connect the Windows 11 endpoint.
+
 Installed the Wazuh agent and Sysmon on a Windows 11 virtual machine, opened ports 1514 and 1515 for the agent's IP only, and confirmed that the agent showed as Active.
 
-3. Deploy TheHive (Azure VM 2)
+4. Deploy TheHive (Azure VM 2).
+
 Installed Cassandra, Elasticsearch and TheHive on a second VM. Elasticsearch runs in single-node mode and, like Cassandra, listens on 127.0.0.1 only. TheHive's port is reachable only from my IP.
 ![Alt text description](./TheHive.jpg)
 *Ref 3: TheHive with dummy-analyst users*
 
-5. Write the detection rule
+5. Write the detection rule.
+
 Created a custom Wazuh rule that triggers on a Sysmon process-creation event using the original file name (in this case) is Mimikatz.
 ![Alt text description](./mimikatz_dis.jpg)
 *Ref 4: Mimikatz successfully discovered*
 
-6. Build the Shuffle workflow
+7. Build the Shuffle workflow
+
 - Webhook receives the Wazuh alert
 - The SHA256 value is extracted from the Sysmon hash field
 - VirusTotal returns the reputation of the hash
@@ -61,8 +66,8 @@ Created a custom Wazuh rule that triggers on a Sysmon process-creation event usi
 *Ref 5: Shuffle Workflow*
 
 6. Test the whole chain
-Ran a test in resulting notification to analyst, and email in finding the targeted log.
 
+Ran a test in resulting notification to analyst, and email in finding the targeted log.
 ![Alt text description](./NotifReceived.jpg)
 ![Alt text description](./Shuffle_email.jpg)
 *Ref 6: Email & Notification recieved*
