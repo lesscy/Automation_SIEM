@@ -76,12 +76,12 @@ __________________________________________________________________
 Problems and How I Solved Them
 
 - Problem: Wazuh agent could not register.
-- Solve: In Azure, is not enough to allow the port 1514 & 1515. but action need to be done by adding a Network Security Group rule for those ports, limited to the agent's IP address.
+- Solve: Azure's Network Security Group blocked ports 1514 and 1515, even though the server's own firewall allowed them. So an inbound Network Security Group rule created for ports 1514 and 1515, limited to the agent's IP address.
 
 - Problem: Cassandra did not start after the VM restarted
-- Solve: All folder that need for Cassandra to work, need to own by Cassandra instead of Root. And now it set up so that all service is running automatically within 30s.
+- Solve: The Cassandra data folders were owned by root instead of the cassandra user, so the service was not allowed to write to them. Now, restored the correct ownership with chown, and now start the service only through systemctl. I also configured TheHive to wait for Cassandra and Elasticsearch and to retry automatically if it fails, so the services recover after a restart.
 
 __________________________________________________________________
-And lastly, on that note: why I did not include *Suricata* (IDS) in this project: This lab focuses on endpoint detection (Wazuh and Sysmon). Suricata a network intrusion detection and prevention system (IDS/IPS), would add network-level visibility for port scans and known malicious traffic.
+And lastly, on that note: why I did not include *Suricata* (IDS) in this project: This lab focuses on endpoint detection (Wazuh and Sysmon). Suricata, a network intrusion detection and prevention system (IDS/IPS), would add network-level visibility for port scans and known malicious traffic.
 
 I left it out of this project because an untuned Suricata produces a large number of low-priority alerts, and too many noise which would bury the Mimikatz detection that this project demonstrates. The goal here was to show that the endpoint is monitored and that an alert flows through the whole workflow until it reaches the analyst by email.
