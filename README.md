@@ -60,6 +60,7 @@ Created a custom Wazuh rule that triggers on a Sysmon process-creation event usi
 - A TheHive alert is created through a service account (API key)
 - An email notification is sent
 
+![Alt text description](./SOAR_Shuffle.png)
 *Ref 5: Shuffle Workflow*
 
 6. Test the whole chain
