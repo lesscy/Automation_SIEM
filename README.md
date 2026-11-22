@@ -29,7 +29,7 @@ Build a detection lab SOC analyst pipeline on Microsoft Azure, for simulating an
 
 ## Steps
 With these diagram as follow, these are the steps that went down.
-![Alt text description](./flowDiagram.jpg)
+![Alt text description](./FlowDiagram.jpg)
 *Ref 1: Automation Diagram*
 
 1. Deploy the Wazuh server (Azure VM 1)
