@@ -76,11 +76,9 @@ __________________________________________________________________
 Problems and How I Solved Them
 
 - Problem: Wazuh agent could not register.
-
 - Solve: In Azure, is not enough to allow the port 1514 & 1515. but action need to be done by adding a Network Security Group rule for those ports, limited to the agent's IP address.
 
 - Problem: Cassandra did not start after the VM restarted
-
 - Solve: All folder that need for Cassandra to work, need to own by Cassandra instead of Root. And now it set up so that all service is running automatically within 30s.
 
 __________________________________________________________________
